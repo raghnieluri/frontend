@@ -1,0 +1,34 @@
+.user-edit-form {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.user-edit-form label {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-edit-form input {
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.user-edit-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
