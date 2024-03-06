@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/login.css";
-import { useNavigate } from "react-router-dom";
-// import Lock from "../assests/padlock-icon.jpg";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -29,14 +28,13 @@ const Login = () => {
       );
 
       const data = await response.json();
-      console.log(data);
+
       if (data?.httpStatusCode === 401) {
         alert(data?.message);
         return;
       }
 
       if (data?.httpStatusCode === 201) {
-        console.log(data?.data);
         localStorage.setItem("access_token", data?.data?.access_token);
         navigate("/");
       }
@@ -45,10 +43,14 @@ const Login = () => {
     }
   };
 
+  const navigateToCreateUser = () => {
+    navigate("/register");
+  };
+
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
-        <h1>Sign in</h1>
+        <h1>Login</h1>
         {/* <img src={Lock} alt="lock icon" /> */}
         <div className="form-group">
           <input
@@ -67,9 +69,19 @@ const Login = () => {
           />
         </div>
         <button type="submit" className="login-button">
-          SUBMIT
+          Sign in
         </button>
+        {/* <button
+          type="button"
+          className="register-button"
+          onClick={navigateToCreateUser}
+        >
+          Sign Up
+        </button> */}
       </form>
+      <Link to="/register" style={{ textAlign: "right", color: "blue" }}>
+        Don't have an account? Sign Up
+      </Link>
     </div>
   );
 };

@@ -7,10 +7,30 @@ table {
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.users_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.logout_btn {
+  margin: 1rem 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+
+.action_column {
+  display: flex;
+  justify-content: space-evenly;
 }

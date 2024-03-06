@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import "../styles/editUsers.css";
 
 interface UserUpdate {
@@ -9,11 +9,15 @@ interface UserUpdate {
 }
 
 const EditUser = () => {
+  const location = useLocation();
+  const state = location.state;
+
   const [user, setUser] = useState<UserUpdate>({
-    name: "",
-    email: "",
-    username: "",
+    name: state.name,
+    email: state.email,
+    username: state.username,
   });
+
   const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
 
@@ -27,15 +31,27 @@ const EditUser = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const token = localStorage.getItem("access_token");
+
     try {
-      await fetch(`http://localhost:5000/user-service/users/${userId}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(user),
-      });
-      navigate(`/user/${userId}`);
+      const response = await fetch(
+        `http://localhost:5000/user-service/users/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(user),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.statusCode === 400) {
+        alert(data.error);
+        return;
+      }
+      navigate(`/`);
     } catch (error) {
       console.error(error);
     }
