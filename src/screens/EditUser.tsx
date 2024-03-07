@@ -34,7 +34,7 @@ const EditUser = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/user-service/users/${userId}`,
+        `http://localhost:5001/user-service/users/${userId}`,
         {
           method: "PUT",
           headers: {

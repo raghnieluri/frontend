@@ -25,7 +25,7 @@ const CreateUser = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/user-service/users", {
+      const response = await fetch("http://localhost:5001/user-service/users", {
         method: "POST",
         body: JSON.stringify(newUser),
         headers: {

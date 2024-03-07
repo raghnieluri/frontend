@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/user-service/auth/login",
+        "http://localhost:5001/user-service/auth/login",
         {
           method: "POST",
           headers: {
