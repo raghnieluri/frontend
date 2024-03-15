@@ -72,7 +72,7 @@ const Users = () => {
   return (
     <div>
       <div className="users_header">
-        <h2>User Management Services</h2>
+        <h2>User Management</h2>
         <button className="logout_btn" onClick={logoutHandler}>
           Logout
           <MdLogout />
@@ -81,7 +81,7 @@ const Users = () => {
       <table>
         <thead>
           <tr>
-            <th>Sl No.</th>
+            <th>Id</th>
             <th>Name</th>
             <th>Email</th>
             <th>Username</th>
@@ -100,10 +100,30 @@ const Users = () => {
                 >
                   {user.id}
                 </td>
-                <td>{user.name}</td>
-
-                <td>{user.email}</td>
-                <td>{user.username}</td>
+                <td
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate(`/user/${user.id}`);
+                  }}
+                >
+                  {user.name}
+                </td>
+                <td
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate(`/user/${user.id}`);
+                  }}
+                >
+                  {user.email}
+                </td>
+                <td
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate(`/user/${user.id}`);
+                  }}
+                >
+                  {user.username}
+                </td>
                 <td className="action_column">
                   <span
                     onClick={() => {

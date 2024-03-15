@@ -40,6 +40,13 @@ const CreateUser = () => {
         return;
       }
 
+      if (response.status === 500) {
+        alert(
+          "This username is already taken. Please choose another username."
+        );
+        return;
+      }
+
       if (data?.httpStatusCode === 201) {
         //popup message
         navigate("/login");
